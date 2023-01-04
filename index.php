@@ -357,11 +357,11 @@ if (isset($_SESSION["active"]))
 		{
 			$userId = $_SESSION["active"];
 			$roleId = $_SESSION["role"]; 			
-			include ("layout/Header/User.php");			
+			include ("layout/header/User.php");			
 		}
 		else
 		{			
-			include ("layout/Header/Guest.php");
+			include ("layout/header/Guest.php");
 		}
 
 		// NAV AND SECTION
