@@ -21,7 +21,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="avatar">
-						<img src="img/logo.png" alt="Avatar">
+						<img src="img/avatar.png" alt="Avatar">
 					</div>				
 					<h4 class="modal-title">Đăng nhập</h4>	
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -51,7 +51,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<div class="avatar">
-						<img src="img/logo.png" alt="Avatar">
+						<img src="img/avatar.png" alt="Avatar">
 					</div>				
 					<h4 class="modal-title">Đăng ký</h4>	
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
