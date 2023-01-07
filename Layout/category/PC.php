@@ -233,18 +233,18 @@
  												<ul>
 													<li>
 													 <label class="ahihi">
-													 	<input type="checkbox" id="" name="" value="">
-  														<label for="1"> Dell</label>
+													 	<input type="checkbox" id="" name="Dell" value="">
+  														<label for="4"> Dell</label>
 													</label>
 													<label class="ahihi">
-													 	<input type="checkbox" id="" name="" value="">
-  														<label for="2"> Apple</label>
+													 	<input type="checkbox" id="" name="Apple" value="">
+  														<label for="1"> Apple</label>
 													</label>				
 													</li>	
 													<li>
 													 <label class="ahihi">
-													 	<input type="checkbox" id="" name="" value="">
-  														<label for="1"> Asus</label>
+													 	<input type="checkbox" id="" name="Asus" value="">
+  														<label for="3"> Asus</label>
 													</label>				
 													</li>
 												</ul>
