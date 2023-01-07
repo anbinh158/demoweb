@@ -316,6 +316,7 @@ if (isset($_SESSION["active"]))
 			$rows = $result -> fetch_assoc();
 			return $rows["quantity"];
 		}
+		
 
 		function totalByUser($id, $conn){
 			$total = 0;
@@ -351,6 +352,26 @@ if (isset($_SESSION["active"]))
 			}
 			return $unique_array;
 		}
+		
+		?>
+		 <!-- Banner Topzone-->
+		 <div class="header-top-bar">
+        <div class="banner-media">
+			<div class="item" data-background-color="#5C0756" data-order="1">
+                    <a aria-label="slide" data-cate="0" data-place="1612" href="https://www.facebook.com/profile.php?id=100088740327226" onclick="jQuery.ajax({ url: '/bannertracking?bid=67439&r='+ (new Date).getTime(), async: true, cache: false });">
+					<center><img width='1200' height='44'   src="img/BANNER.WEBP" alt="sale"  > </center>  </a>
+                </div>
+                
+    </div>
+    <style>
+        .banner-media{
+            background-color: #5C0756;
+        }
+    </style>
+
+        </div>
+</div>
+		<?php
 
 		// TOP HEADER
 		if (isset($_SESSION["active"]))
@@ -363,9 +384,11 @@ if (isset($_SESSION["active"]))
 		{			
 			include ("layout/header/Guest.php");
 		}
+		
 
 		// NAV AND SECTION
 		if (isset($_GET["nav"]))
+		
 		{
 			$nav = $_GET["nav"];
 			if ($nav == "laptop"){
@@ -403,7 +426,9 @@ if (isset($_SESSION["active"]))
 		{
 			include ("layout/Home.php");
 		}
+		
 	?>				
+	
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
 			<!-- container -->
