@@ -249,7 +249,7 @@
 								<input type = "email" class = "frm_user__info--input" value = "<?php echo $row_usr['mail'];?>" name = "mail">
 							</div>
 							<div class = "frm_user__info">
-								<label class = "frm_user__info--lbl">địa chỉ</label>
+								<label class = "frm_user__info--lbl">Địa chỉ</label>
 								<input type = "text" class = "frm_user__info--input" value = "<?php echo $row_usr['address'];?>" name = "address">
 							</div>
 							<div class = "frm_user__info">

@@ -165,7 +165,7 @@
 		float: left;
 		padding: 5px 13px;
 		margin: 5px;
-		background-color: #D10024;
+		background-color: #FA19B8;
 		display: block;
 	}
 	ul.list_trang li a{
@@ -259,7 +259,7 @@
 													<div class="form-group col-md-12"> Min (VNĐ) <input class="form-control" placeholder="0" type="number"> </div>
 													<div class="form-group col-md-12"> Max (VNĐ)<input class="form-control" placeholder="100.0000.000 VNĐ" type="number"> </div>
 												</div>
-												<a href="#" class="btn btn-danger price-filter" data-abc="true">Apply Now</a>
+												<a href="#" class="btn btn-danger price-filter" style='background-color: #FA19B8;' data-abc="true"><strong>Apply Now</strong></a>
 											</div>
 										</article>
 									</div>

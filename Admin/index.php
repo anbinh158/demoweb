@@ -61,7 +61,7 @@
             }
 
             .nav__user:hover{
-                color: #E95454;
+                color: #5C0756;
             }
 
             .nav__user #button__user{
@@ -86,7 +86,7 @@
             }
 
             .menu__ngdung--1:hover{
-                color: #E95454;
+                color: #5C0756;
             }
 
             .nav__user .menu__ngdung{

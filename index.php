@@ -428,43 +428,61 @@ if (isset($_SESSION["active"]))
 		}
 		
 	?>				
-	
+
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="newsletter">
-							<p>Nhận Mail thông báo từ <strong>TECH5</strong></p>
-							<form>
-								<input class="input" type="email" placeholder="Nhập Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i><a href= "mailto:mistech5.studio@gmail.com"> <strong>Send</strong></a></button>
-							</form>
-							<ul class="newsletter-follow">
-								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-instagram"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
-								</li>
-							</ul>
-						</div>
+				<div class='row'>
+					<div class='col-md-12'>
+					<center><h2>!!! PHẢN HỒI VỀ <font color='#FA19B8'>TECH5</font> TẠI ĐÂY !!!</h2><br></center>
+					<center><div>
+					<form action="mailto:mistech5.studio@gmail.com" method="post" enctype="text/plain">
+						<strong>NAME: </strong>
+					<input style='display:inline' type="text" name="Name: " placeholder ='VD: abc, ...' size ='40'>
+						<br><br><strong>EMAIL: </strong>
+					<input type="text" name="Mail: " placeholder ='VD: someone@example.com, ...' size ='50'>
+						<br><br><strong>REMARK:  </strong>
+					<input type="text" name="Remark: " placeholder ='VD: Web xịn thế, ...' size ="60"><br><br>
+					<button type ="submit"; style='position: center;
+    								display: inline;
+    								width: 100px;
+									height: 40px;
+									text-align: center;
+									line-height: 40px;
+									border: 1px solid #E4E7ED;
+									background-color: #FA19B8;
+									color: #FFF;
+									border-radius: 50px;
+									-webkit-transition: 0.2s all;
+									transition: 0.2s all;'>
+
+										  <strong>SEND</strong></button> 
+					<button type ="reset" style='position: center;
+									display: inline;
+									width: 100px;
+									height: 40px;
+									text-align: center;
+									line-height: 40px;
+									border: 1px solid #E4E7ED;
+									background-color: #FA19B8;
+									border-radius: 50px;
+									color: #FFF;
+									-webkit-transition: 0.2s all;
+									transition: 0.2s all;'>
+										   <strong>RESET</strong></button>
+					</form>
+					</div></center>
 					</div>
 				</div>
+					
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-
+		
 		<!-- FOOTER -->
 		<?php
 			include ("layout/Footer.php");
