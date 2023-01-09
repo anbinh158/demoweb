@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 29, 2022 at 06:21 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th1 05, 2023 lúc 10:02 AM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,24 +18,24 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `demoweb`
+-- Cơ sở dữ liệu: `demoweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `brand`
+-- Cấu trúc bảng cho bảng `brand`
 --
 
 CREATE TABLE `brand` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `origin` varchar(50) NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `origin` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `brand`
+-- Đang đổ dữ liệu cho bảng `brand`
 --
 
 INSERT INTO `brand` (`id`, `name`, `origin`, `is_deleted`) VALUES
@@ -58,17 +58,17 @@ INSERT INTO `brand` (`id`, `name`, `origin`, `is_deleted`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cart`
+-- Cấu trúc bảng cho bảng `cart`
 --
 
 CREATE TABLE `cart` (
-  `user_id` varchar(12) NOT NULL,
+  `user_id` varchar(12) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `cart`
+-- Đang đổ dữ liệu cho bảng `cart`
 --
 
 INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) VALUES
@@ -85,58 +85,57 @@ INSERT INTO `cart` (`user_id`, `product_id`, `quantity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `deliver`
+-- Cấu trúc bảng cho bảng `deliver`
 --
 
 CREATE TABLE `deliver` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `dob` date NOT NULL,
-  `phone_number` varchar(12) NOT NULL,
+  `phone_number` varchar(12) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `is_ready` tinyint(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `deliver`
+-- Đang đổ dữ liệu cho bảng `deliver`
 --
 
 INSERT INTO `deliver` (`id`, `name`, `dob`, `phone_number`, `is_ready`) VALUES
-(1, 'Đinh Trung Kiên', '2003-06-13', '0975632174', 1),
-(2, 'Dùng Duy Mạnh', '2001-10-28', '0963475124', 1),
-(3, 'Nguyễn Duy Khương', '2004-02-15', '0963475124', 1),
-(4, 'Trịnh Thảo Ly', '2001-11-16', '0985362147', 1);
+(1, 'Ngụy Trung Hiền', '2000-06-13', '0975632175', 0),
+(2, 'Thẩm Luyện', '1990-10-28', '0963474568', 1),
+(3, 'Đinh Tu', '2004-02-15', '0963475544', 1),
+(4, 'Đào Thúy Vy', '2002-08-09', '0985362456', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guest_bill`
+-- Cấu trúc bảng cho bảng `guest_bill`
 --
 
 CREATE TABLE `guest_bill` (
-  `id` varchar(100) NOT NULL,
+  `id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `status_id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
-  `phone_number` varchar(12) NOT NULL,
-  `address` varchar(200) NOT NULL,
+  `name` varchar(200) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `phone_number` varchar(12) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `address` varchar(200) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `total` int(11) NOT NULL,
   `created_time` datetime NOT NULL DEFAULT current_timestamp(),
   `payment_mode_id` int(11) NOT NULL,
-  `note` varchar(250) DEFAULT NULL,
+  `note` varchar(250) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `deliver_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `guest_bill`
+-- Đang đổ dữ liệu cho bảng `guest_bill`
 --
 
 INSERT INTO `guest_bill` (`id`, `status_id`, `name`, `phone_number`, `address`, `total`, `created_time`, `payment_mode_id`, `note`, `deliver_id`) VALUES
-('G1', 3, '', '', '', 22480800, '2022-01-11 06:14:10', 1, '', 1),
 ('G2', 1, '', '', '', 22480800, '2022-01-11 06:15:31', 1, '', NULL),
-('G3', 1, 'Hưng Ngọc Nguyễn', '0973360301', '12 Chùa Bộc, Quang Trung, Đống Đa, Hà Nội', 56970000, '2022-01-11 06:23:33', 1, '', NULL),
-('G5', 1, 'Hưng Ngọc Nguyễn', '0973360301', '12 Chùa Bộc, Quang Trung, Đống Đa, Hà Nội', 84170000, '2022-01-11 06:39:49', 1, '', NULL);
+('G3', 1, 'Bình An Trần', '0868197116', '12 Chùa Bộc, Quang Trung, Đống Đa, Hà Nội', 56970000, '2022-12-20 06:23:33', 1, '', NULL),
+('G5', 1, 'Bình An Trần', '0868197116', '12 Chùa Bộc, Quang Trung, Đống Đa, Hà Nội', 84170000, '2022-12-20 06:39:49', 1, '', NULL);
 
 --
--- Triggers `guest_bill`
+-- Bẫy `guest_bill`
 --
 DELIMITER $$
 CREATE TRIGGER `tg_guestBill_insert` BEFORE INSERT ON `guest_bill` FOR EACH ROW BEGIN
@@ -149,17 +148,17 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guest_bill_detail`
+-- Cấu trúc bảng cho bảng `guest_bill_detail`
 --
 
 CREATE TABLE `guest_bill_detail` (
-  `bill_id` varchar(100) NOT NULL,
+  `bill_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `guest_bill_detail`
+-- Đang đổ dữ liệu cho bảng `guest_bill_detail`
 --
 
 INSERT INTO `guest_bill_detail` (`bill_id`, `product_id`, `quantity`) VALUES
@@ -179,36 +178,26 @@ INSERT INTO `guest_bill_detail` (`bill_id`, `product_id`, `quantity`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guest_bill_seq`
+-- Cấu trúc bảng cho bảng `guest_bill_seq`
 --
 
 CREATE TABLE `guest_bill_seq` (
   `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
---
--- Dumping data for table `guest_bill_seq`
---
-
-INSERT INTO `guest_bill_seq` (`id`) VALUES
-(1),
-(2),
-(3),
-(5);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment_mode`
+-- Cấu trúc bảng cho bảng `payment_mode`
 --
 
 CREATE TABLE `payment_mode` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `payment_mode`
+-- Đang đổ dữ liệu cho bảng `payment_mode`
 --
 
 INSERT INTO `payment_mode` (`id`, `name`) VALUES
@@ -218,43 +207,43 @@ INSERT INTO `payment_mode` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `product_type_id` int(11) NOT NULL,
   `brand_id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(200) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `price` int(11) NOT NULL,
   `sale_price` int(11) NOT NULL DEFAULT 0,
   `import_date` date NOT NULL,
   `quantity` int(11) NOT NULL,
   `warranty_day` int(11) NOT NULL,
-  `detail` varchar(1000) DEFAULT NULL,
-  `image` varchar(200) DEFAULT NULL,
+  `detail` varchar(1000) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `image` varchar(200) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`id`, `product_type_id`, `brand_id`, `name`, `price`, `sale_price`, `import_date`, `quantity`, `warranty_day`, `detail`, `image`, `is_deleted`) VALUES
-(1, 1, 2, 'Samsung Galaxy Z Flip3 5G 128GB', 20080000, 20080000, '2021-05-10', 56, 720, 'Màn hình: Full HD+ (1080 x 2640 Pixels) \nRAM: 8 GB\nCamera: 12 MP - 12 MP.\nPin: 3.300 mAh', '1.jpg', 0),
-(2, 1, 2, 'Samsung Galaxy Z Fold3 5G 256GB', 33740000, 33740000, '2021-05-20', 51, 720, 'Màn hình: Full HD+ (1768 x 2208 Pixels) \nRAM: 12 GB\nCamera: 12 MP - 12 MP - 12 MP\nPin: 4.400 mAh', '2.jpg', 0),
-(3, 1, 2, 'Samsung Galaxy S21 Ultra 5G 128GB', 24400000, 24400000, '2021-05-20', 150, 720, 'Màn hình:  2K+ (1440 x 3200 Pixels) \nRAM: 12 GB\nCamera: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP.\nPin: 5000 mAh', '3.jpg', 0),
-(4, 1, 2, 'Samsung Galaxy S20 FE (8GB/256GB)', 12070000, 12070000, '2021-05-20', 187, 720, 'Màn hình: Full HD+ (1080 x 2400 Pixels)\nRAM: 8 GB\nCamera: Chính 12 MP & Phụ 12 MP, 8 MP, 4K\nPin: 4500 mAh', '4.jpg', 0),
-(5, 1, 2, 'Samsung Galaxy A12 4GB', 3480000, 3480000, '2021-05-20', 124, 720, 'Màn hình: HD+ (720 x 1600 Pixels)\nRAM: 4 GB\nCamera: Chính 48 MP & Phụ 5 MP, 2 MP, 2 MP\nPin: 5000 mAh', '5.jpg', 0),
-(6, 1, 2, 'Samsung Galaxy A32', 5270000, 5270000, '2021-05-20', 197, 720, 'Màn hình:  Full HD+ (1080 x 2400 Pixels) \nRAM: 6 GB\nCamera: 64MP\nPin: 5,000mAh', '6.jpg', 0),
-(7, 1, 2, 'Samsung Galaxy A52s 5G 128GB', 8830000, 8830000, '2021-05-20', 145, 720, 'Màn hình: Độ phân giải: Full HD+ (1080 x 2400 Pixels) \nRAM: 8GB\nCamera:  32MP FF\nPin: 4500 mAh', '7.jpg', 0),
-(8, 1, 2, 'Samsung Galaxy M51', 7470000, 7470000, '2021-03-01', 89, 720, 'Màn hình: Full HD+ (1080 x 2400 Pixels) \nRAM: 8 GB \nCamera: Chính 64 MP & Phụ 12 MP, 5 MP, 5 MP\nPin: 7000 mAh', '8.jpg', 0),
-(9, 1, 2, 'Samsung Galaxy Note 20', 18510000, 18510000, '2021-03-01', 76, 720, 'Màn hình: Full HD+ (1080 x 2400 Pixels) \nRAM: 8 GB \nCamera: Chính 12 MP & Phụ 64 MP, 12 MP\nPin: 4300 mAh', '9.jpg', 0),
-(10, 1, 1, 'iPhone 11', 25990000, 21780000, '2021-03-01', 179, 360, 'Màn hình: 6.1\"\nRAM: 4 GB\nCamera: 2 camera 12 MP\nPin: 3110 mAh', '10.jpg', 0),
-(11, 1, 1, 'iPhone 13 Pro Max', 32900000, 30990000, '2021-03-01', 215, 360, 'Màn hình: 6.7\"\nRAM: 6 GB\nCamera: 3 camera 12 MP\nPin: 4352 mAh', '11.jpg', 0),
-(12, 1, 1, 'iPhone 12 Pro Max', 18990000, 18690000, '2021-03-01', 246, 360, 'Màn hình: 6.7\"\nRAM: 6 GB\nCamera: 3 camera 12 MP\nPin: 3687 mAh', '12.jpg', 0),
-(13, 1, 1, 'iPhone 13 mini', 18490000, 17500000, '2021-05-10', 65, 360, 'Màn hình: 6.1\"\nRAM: 4 GB\nCamera: 2 camera 12 MP\nPin: 3240 mAh', '13.jpg', 0),
-(14, 2, 1, 'MacBook Pro 16 M1 Max 2021/32 core-GPU', 87900000, 87900000, '2021-05-10', 67, 360, 'Màn hình: 16.2 inch, 120Hz\nCPU: Apple M1 Max, 400GB/s memory bandwidth\nPin: Khoảng 10 tiếng\nRAM: 16GB', '14.jpg', 0),
+(1, 1, 2, 'Samsung Galaxy Z Flip3 5G 128GB', 20080000, 20080000, '2022-12-26', 56, 720, 'Màn hình: Full HD+ (1080 x 2640 Pixels) \nRAM: 8 GB\nCamera: 12 MP - 12 MP.\nPin: 3.300 mAh', '1.jpg', 0),
+(2, 1, 2, 'Samsung Galaxy Z Fold3 5G 256GB', 33740000, 33740000, '2022-12-26', 51, 720, 'Màn hình: Full HD+ (1768 x 2208 Pixels) \nRAM: 12 GB\nCamera: 12 MP - 12 MP - 12 MP\nPin: 4.400 mAh', '2.jpg', 0),
+(3, 1, 2, 'Samsung Galaxy S21 Ultra 5G 128GB', 24400000, 24400000, '2022-12-26', 150, 720, 'Màn hình:  2K+ (1440 x 3200 Pixels) \nRAM: 12 GB\nCamera: Chính 108 MP & Phụ 12 MP, 10 MP, 10 MP.\nPin: 5000 mAh', '3.jpg', 0),
+(4, 1, 2, 'Samsung Galaxy S20 FE (8GB/256GB)', 12070000, 12070000, '2022-12-26', 187, 720, 'Màn hình: Full HD+ (1080 x 2400 Pixels)\nRAM: 8 GB\nCamera: Chính 12 MP & Phụ 12 MP, 8 MP, 4K\nPin: 4500 mAh', '4.jpg', 0),
+(5, 1, 2, 'Samsung Galaxy A12 4GB', 3480000, 3480000, '2022-12-26', 124, 720, 'Màn hình: HD+ (720 x 1600 Pixels)\nRAM: 4 GB\nCamera: Chính 48 MP & Phụ 5 MP, 2 MP, 2 MP\nPin: 5000 mAh', '5.jpg', 0),
+(6, 1, 2, 'Samsung Galaxy A32', 5270000, 5270000, '2022-12-26', 197, 720, 'Màn hình:  Full HD+ (1080 x 2400 Pixels) \nRAM: 6 GB\nCamera: 64MP\nPin: 5,000mAh', '6.jpg', 0),
+(7, 1, 2, 'Samsung Galaxy A52s 5G 128GB', 8830000, 8830000, '2022-12-26', 145, 720, 'Màn hình: Độ phân giải: Full HD+ (1080 x 2400 Pixels) \nRAM: 8GB\nCamera:  32MP FF\nPin: 4500 mAh', '7.jpg', 0),
+(8, 1, 2, 'Samsung Galaxy M51', 7470000, 7470000, '2022-12-26', 89, 720, 'Màn hình: Full HD+ (1080 x 2400 Pixels) \nRAM: 8 GB \nCamera: Chính 64 MP & Phụ 12 MP, 5 MP, 5 MP\nPin: 7000 mAh', '8.jpg', 0),
+(9, 1, 2, 'Samsung Galaxy Note 20', 18510000, 18510000, '2022-12-26', 76, 720, 'Màn hình: Full HD+ (1080 x 2400 Pixels) \nRAM: 8 GB \nCamera: Chính 12 MP & Phụ 64 MP, 12 MP\nPin: 4300 mAh', '9.jpg', 0),
+(10, 1, 1, 'iPhone 11', 25990000, 21780000, '2022-12-26', 179, 360, 'Màn hình: 6.1\"\nRAM: 4 GB\nCamera: 2 camera 12 MP\nPin: 3110 mAh', '10.jpg', 0),
+(11, 1, 1, 'iPhone 13 Pro Max', 32900000, 30990000, '2022-12-26', 215, 360, 'Màn hình: 6.7\"\nRAM: 6 GB\nCamera: 3 camera 12 MP\nPin: 4352 mAh', '11.jpg', 0),
+(12, 1, 1, 'iPhone 12 Pro Max', 18990000, 18690000, '2022-12-26', 246, 360, 'Màn hình: 6.7\"\nRAM: 6 GB\nCamera: 3 camera 12 MP\nPin: 3687 mAh', '12.jpg', 0),
+(13, 1, 1, 'iPhone 13 mini', 18490000, 17500000, '2022-12-26', 65, 360, 'Màn hình: 6.1\"\nRAM: 4 GB\nCamera: 2 camera 12 MP\nPin: 3240 mAh', '13.jpg', 0),
+(14, 2, 1, 'MacBook Pro 16 M1 Max 2021/32 core-GPU', 87900000, 87900000, '2022-12-26', 67, 360, 'Màn hình: 16.2 inch, 120Hz\nCPU: Apple M1 Max, 400GB/s memory bandwidth\nPin: Khoảng 10 tiếng\nRAM: 16GB', '14.jpg', 0),
 (15, 2, 1, 'MacBook Pro 14 M1 Max 2021/32-core GPU', 90990000, 90990000, '2021-05-10', 186, 360, 'Màn hình: 14.2 inch, Retina, 120Hz\nCPU: Apple M1 Max, 400GB/s memory bandwidth\nPin: Khoảng 10 tiếng\nRAM: 16GB', '15.jpg', 0),
 (16, 2, 1, 'MacBook Air M1 2020 7-core GPU', 25990000, 25990000, '2021-05-10', 174, 360, 'Màn hình: 13.3\", Retina\nCPU: Apple M1\nPin: Khoảng 10 tiếng\nRAM: 8GB', '16.jpg', 0),
 (17, 2, 1, 'MacBook Air M1 2020 8-core GPU', 31240000, 31240000, '2021-05-10', 205, 360, 'Màn hình: 13.3\", Retina\nCPU: Apple M1\nPin: Khoảng 10 tiếng\nRAM: 8GB', '17.jpg', 0),
@@ -363,22 +352,27 @@ INSERT INTO `product` (`id`, `product_type_id`, `brand_id`, `name`, `price`, `sa
 (120, 2, 4, 'LAPTOP DELL INSPIRON 5505', 22719000, 22419000, '2021-12-25', 47, 360, 'Màn hình: 15.6 inch FHD\nCPU: AMD R7 4700U\nPin: \nRAM: 8GB', '120.jpg', 0),
 (121, 2, 4, 'LAPTOP DELL VOSTRO 3510', 22489000, 21199000, '2021-12-18', 140, 360, 'Màn hình: 15.6-inch FHD (1920 x 1080)\nCPU: Intel Core i5 1135G7 (2.4Ghz/8MB cache)\nPin: \nRAM: 8GB', '121.jpg', 0),
 (122, 2, 4, 'LAPTOP DELL ALIENWARE GAMING M15 R6', 58999000, 58999000, '2021-12-18', 165, 360, 'Màn hình: 15.6 inch FHD (1920x1080)\nCPU: Intel Core i7-10750H\nPin: 4 Cell 68Whr\nRAM: 16GB', '122.jpg', 0),
-(123, 2, 1, 'MacBook Pro 13\" 2020 Touch Bar M1', 34999000, 34999000, '2021-12-18', 178, 360, 'Màn hình: 13.3 inches\nCPU:  Intel Core i7-10750H\nPin: 58.2-watt-hour lithium-polymer\nRAM: 8GB', NULL, 0);
+(123, 2, 1, 'MacBook Pro 13\" 2020 Touch Bar M1', 34999000, 34999000, '2022-12-01', 178, 360, 'Màn hình: 13.3 inches\nCPU:  Intel Core i7-10750H\nPin: 58.2-watt-hour lithium-polymer\nRAM: 8GB', NULL, 0),
+(124, 1, 1, 'Apple iPhone 14 Pro Max - 256GB - Chính hãng VN/A', 34000000, 33390000, '2023-01-04', 50, 360, 'Công nghệ màn hình:: OLED\r\nĐộ phân giải:: 2796 x 1290 Pixels\r\nĐộ phân giải: Chính 48 MP & Phụ 12 MP, 12 MP, 12 MP\r\nHệ điều hành: iOS 16\r\nChip xử lý (CPU): Apple A16 Bionic 6 nhân\r\nBộ nhớ trong (ROM): 256GB\r\nRAM: 6 GB\r\nMạng di động: Hỗ trợ 5G\r\nSố khe sim: 1 Nano SIM & 1 eSIM\r\nDung lượng pin: 4323 mAh', '124.jpg', 0),
+(125, 2, 1, 'MacBook Pro M2 13\" 2022 - 256GB - Chính hãng Apple Việt Nam', 31990000, 30390000, '2023-01-04', 40, 360, 'Tốc độ CPU: 100GB/s memory bandwidth\r\nRAM: 8 GB\r\nĐộ phân giải (W x H): Retina (2560 x 1600)\r\nKết nối không dây:: Bluetooth 5.0, Wi-Fi 6 (802.11ax)\r\nKích thước, trọng lượng:: 212.4', '125.jpg', 0),
+(126, 6, 1, 'Apple Watch SE GPS, 40mm Aluminum Case - Chính hãng (VN/A)', 8990000, 5980000, '2023-01-04', 30, 360, 'CPU: Apple S5 64 bit\r\nDung lượng pin: Đang cập nhật\r\nKích thước: 40 mm x 34 mm x 10.4 mm\r\nTrọng lượng: 30.49 gram', '126.jpg', 0),
+(127, 3, 15, 'MSI G241VC 23.6inch + VGA/Cong', 5399000, 2666000, '2023-01-04', 25, 360, 'Kích thước màn hình	23.8 inch\r\nĐộ phân giải	FHD (1920x1080)\r\nTấm nền	VA\r\nTần số quét	75Hz\r\nĐộ sáng	250NITS\r\nThời gian phản hồi	1ms\r\nTỷ lệ tương phản	3000/1\r\nTỉ lệ khung hình	16:09\r\nGóc nhìn (H/V)	178/178 º\r\nKhả năng hiển thị màu sắc	16.7 triệu màu', '127.jpg', 0),
+(128, 1, 2, 'Samsung Galaxy S22 Ultra - 12GB/512GB', 36990000, 28890000, '2023-01-04', 100, 360, 'Công nghệ màn hình:: Dynamic AMOLED 2X\r\nĐộ phân giải:: 3088 x 1440\r\nMàn hình rộng:: 6.8\", Tần số quét: 1 - 120 Hz\r\nĐộ phân giải: 12MP (UW) + 108MP (W) + 12MP (Tele3x) + 12MP (Tele10x), 40MP\r\nHệ điều hành: Android 12\r\nChip xử lý (CPU): Snapdragon® 8 Gen 1 (4nm)\r\nBộ nhớ trong (ROM): 512GB\r\nRAM: 12GB\r\nMạng di động: 5G\r\nSố khe sim: 1 nano SIM + 1 e-SIM\r\nDung lượng pin: 5000 mAh', '128.jpg', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product_type`
+-- Cấu trúc bảng cho bảng `product_type`
 --
 
 CREATE TABLE `product_type` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `product_type`
+-- Đang đổ dữ liệu cho bảng `product_type`
 --
 
 INSERT INTO `product_type` (`id`, `name`, `is_deleted`) VALUES
@@ -392,16 +386,16 @@ INSERT INTO `product_type` (`id`, `name`, `is_deleted`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Cấu trúc bảng cho bảng `role`
 --
 
 CREATE TABLE `role` (
   `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL
+  `name` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `role`
+-- Đang đổ dữ liệu cho bảng `role`
 --
 
 INSERT INTO `role` (`id`, `name`) VALUES
@@ -412,16 +406,16 @@ INSERT INTO `role` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status`
+-- Cấu trúc bảng cho bảng `status`
 --
 
 CREATE TABLE `status` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) COLLATE utf8mb4_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `status`
+-- Đang đổ dữ liệu cho bảng `status`
 --
 
 INSERT INTO `status` (`id`, `name`) VALUES
@@ -434,71 +428,30 @@ INSERT INTO `status` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_bill`
+-- Cấu trúc bảng cho bảng `user_bill`
 --
 
 CREATE TABLE `user_bill` (
-  `id` varchar(100) NOT NULL,
-  `user_id` varchar(12) NOT NULL,
+  `id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `user_id` varchar(12) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `status_id` int(11) DEFAULT NULL,
   `total` int(11) NOT NULL,
-  `address` varchar(200) NOT NULL,
+  `address` varchar(200) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `created_time` datetime NOT NULL DEFAULT current_timestamp(),
   `payment_mode_id` int(11) NOT NULL,
-  `note` varchar(250) DEFAULT NULL,
+  `note` varchar(250) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `deliver_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `user_bill`
+-- Đang đổ dữ liệu cho bảng `user_bill`
 --
 
 INSERT INTO `user_bill` (`id`, `user_id`, `status_id`, `total`, `address`, `created_time`, `payment_mode_id`, `note`, `deliver_id`) VALUES
-('u10', '123', 1, 90677000, '', '2022-01-07 19:25:21', 2, '', NULL),
-('u11', '123', 1, 90677000, '', '2022-01-07 19:27:02', 2, '', NULL),
-('u12', '123', 1, 90677000, '', '2022-01-07 19:28:47', 2, '', NULL),
-('u13', '123', 1, 90677000, '', '2022-01-07 19:30:17', 2, '', NULL),
-('u14', '123', 1, 90677000, '', '2022-01-07 19:31:48', 2, '', NULL),
-('u15', '123', 1, 90677000, '', '2022-01-07 19:33:01', 2, '', NULL),
-('u16', '123', 1, 90677000, '', '2022-01-07 19:34:09', 2, '', NULL),
-('u17', '123', 1, 90677000, '', '2022-01-07 19:35:34', 2, '', NULL),
-('u18', '123', 1, 90677000, '', '2022-01-07 19:37:06', 2, '', NULL),
-('u19', '123', 1, 90677000, '', '2022-01-07 19:38:19', 2, '', NULL),
-('u20', '123', 1, 90677000, '', '2022-01-07 19:39:30', 2, '', NULL),
-('u21', '123', 1, 90677000, '', '2022-01-07 19:43:39', 2, '', NULL),
-('u22', '123', 1, 90677000, '', '2022-01-07 19:45:14', 2, '', NULL),
-('u23', '123', 1, 90677000, '', '2022-01-07 19:46:47', 2, '', NULL),
-('u24', '123', 1, 90677000, '', '2022-01-07 19:48:04', 2, '', NULL),
-('u25', '123', 1, 90677000, '', '2022-01-07 19:49:27', 2, '', NULL),
-('u26', '123', 1, 90677000, '', '2022-01-07 19:53:38', 2, '', NULL),
-('u27', '02', 1, 34490000, '', '2022-01-07 21:12:35', 1, '', NULL),
-('u28', '0973360301', 1, 93240000, '', '2022-01-07 22:51:47', 2, '', NULL),
-('u29', '0973360301', 1, 49680000, '', '2022-01-07 22:51:54', 2, '', NULL),
-('u3', '123', 1, 33278000, '', '2022-01-07 19:07:38', 2, '', NULL),
-('u30', '0973360301', 1, 18690000, '', '2022-01-07 23:41:20', 2, '', NULL),
-('u31', '123', 1, 12842000, 'string', '2022-01-08 04:32:58', 1, '', NULL),
-('u32', '123', 1, 12842000, 'test', '2022-01-08 04:35:08', 1, '', NULL),
-('u33', '123', 1, 12842000, 'string', '2022-01-08 04:42:13', 1, '', NULL),
-('u34', '123', 1, 153099000, 'string', '2022-01-08 07:15:12', 1, '', NULL),
-('u36', '123', 1, 153099000, 'string', '2022-01-08 07:17:11', 1, '', NULL),
-('u37', '123', 1, 153099000, 'string', '2022-01-08 07:17:47', 1, '', NULL),
-('u38', '123', 1, 153099000, 'string', '2022-01-08 07:18:29', 1, '', NULL),
-('u39', '123', 1, 153099000, 'string', '2022-01-08 07:20:02', 1, '', NULL),
-('u4', '123', 1, 95237000, '', '2022-01-07 19:07:30', 2, '', NULL),
-('u40', '123', 1, 153099000, 'string', '2022-01-08 07:21:46', 1, '', NULL),
-('u41', '123', 1, 153099000, 'string', '2022-01-08 07:22:38', 1, '', NULL),
-('u42', '123', 2, 153099000, 'string', '2022-01-08 07:23:40', 1, '', NULL),
-('u43', '123', 2, 153099000, 'string', '2022-01-08 07:24:48', 1, '', NULL),
-('u45', '123', 2, 153099000, '', '2022-01-08 07:26:26', 1, '', NULL),
-('u46', '123', 3, 92689000, 'test 11/1', '2022-01-11 05:44:27', 1, '', 1),
-('u5', '123', 1, 64268000, '', '2022-01-07 19:07:07', 2, '', NULL),
-('u6', '123', 1, 90677000, '', '2022-01-07 19:07:48', 2, '', NULL),
-('u7', '123', 1, 90677000, '', '2022-01-07 19:15:27', 2, '', NULL),
-('u8', '123', 1, 90677000, '', '2022-01-07 19:17:54', 2, '', NULL),
-('u9', '123', 1, 90677000, '', '2022-01-07 19:21:04', 2, '', NULL);
+('u47', '0868197116', 3, 21990000, 'Số nhà 15, ngõ 592 Trường Chinh, Khương Thượng', '2023-01-04 14:37:47', 1, '', 1);
 
 --
--- Triggers `user_bill`
+-- Bẫy `user_bill`
 --
 DELIMITER $$
 CREATE TRIGGER `tg_userBill_insert` BEFORE INSERT ON `user_bill` FOR EACH ROW BEGIN
@@ -511,17 +464,17 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_bill_detail`
+-- Cấu trúc bảng cho bảng `user_bill_detail`
 --
 
 CREATE TABLE `user_bill_detail` (
-  `bill_id` varchar(100) NOT NULL,
+  `bill_id` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `user_bill_detail`
+-- Đang đổ dữ liệu cho bảng `user_bill_detail`
 --
 
 INSERT INTO `user_bill_detail` (`bill_id`, `product_id`, `quantity`) VALUES
@@ -722,12 +675,13 @@ INSERT INTO `user_bill_detail` (`bill_id`, `product_id`, `quantity`) VALUES
 ('u45', 68, 1),
 ('u46', 13, 4),
 ('u46', 12, 1),
-('u46', 68, 1);
+('u46', 68, 1),
+('u47', 53, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_bill_seq`
+-- Cấu trúc bảng cho bảng `user_bill_seq`
 --
 
 CREATE TABLE `user_bill_seq` (
@@ -735,7 +689,7 @@ CREATE TABLE `user_bill_seq` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `user_bill_seq`
+-- Đang đổ dữ liệu cho bảng `user_bill_seq`
 --
 
 INSERT INTO `user_bill_seq` (`id`) VALUES
@@ -782,60 +736,58 @@ INSERT INTO `user_bill_seq` (`id`) VALUES
 (42),
 (43),
 (45),
-(46);
+(46),
+(47);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usr`
+-- Cấu trúc bảng cho bảng `usr`
 --
 
 CREATE TABLE `usr` (
-  `id` varchar(12) NOT NULL,
+  `id` varchar(12) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `role_id` int(11) NOT NULL,
-  `PASSWORD` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `mail` varchar(100) DEFAULT NULL,
-  `address` varchar(200) DEFAULT NULL,
+  `PASSWORD` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `mail` varchar(100) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `address` varchar(200) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 --
--- Dumping data for table `usr`
+-- Đang đổ dữ liệu cho bảng `usr`
 --
 
 INSERT INTO `usr` (`id`, `role_id`, `PASSWORD`, `name`, `mail`, `address`, `is_deleted`) VALUES
-('02', 3, '1', 'Test case 02', NULL, NULL, 0),
-('0973360300', 3, '1', 'Nguyễn Văn A', NULL, NULL, 0),
-('0973360301', 1, 'Hung2001@', 'Nguyen Ngoc Hung', NULL, NULL, 0),
-('123', 3, '1', 'Test case 01', NULL, NULL, 0),
-('1234567890', 3, '1', 'user second', NULL, NULL, 0);
+('0123456789', 3, '123', 'anbinh', NULL, NULL, 0),
+('0868197116', 1, '123', 'Trần An Bình', 'anbinh150803@gmail.com', 'Số nhà 15, ngõ 592 Trường Chinh, Khương Thượng', 0);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `brand`
+-- Chỉ mục cho bảng `brand`
 --
 ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cart`
+-- Chỉ mục cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD KEY `user_id` (`user_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `deliver`
+-- Chỉ mục cho bảng `deliver`
 --
 ALTER TABLE `deliver`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `guest_bill`
+-- Chỉ mục cho bảng `guest_bill`
 --
 ALTER TABLE `guest_bill`
   ADD PRIMARY KEY (`id`),
@@ -844,26 +796,26 @@ ALTER TABLE `guest_bill`
   ADD KEY `deliver_id` (`deliver_id`);
 
 --
--- Indexes for table `guest_bill_detail`
+-- Chỉ mục cho bảng `guest_bill_detail`
 --
 ALTER TABLE `guest_bill_detail`
   ADD KEY `bill_id` (`bill_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `guest_bill_seq`
+-- Chỉ mục cho bảng `guest_bill_seq`
 --
 ALTER TABLE `guest_bill_seq`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `payment_mode`
+-- Chỉ mục cho bảng `payment_mode`
 --
 ALTER TABLE `payment_mode`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
@@ -871,25 +823,25 @@ ALTER TABLE `product`
   ADD KEY `brand_id` (`brand_id`);
 
 --
--- Indexes for table `product_type`
+-- Chỉ mục cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Chỉ mục cho bảng `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `status`
+-- Chỉ mục cho bảng `status`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_bill`
+-- Chỉ mục cho bảng `user_bill`
 --
 ALTER TABLE `user_bill`
   ADD PRIMARY KEY (`id`),
@@ -899,96 +851,96 @@ ALTER TABLE `user_bill`
   ADD KEY `deliver_id` (`deliver_id`);
 
 --
--- Indexes for table `user_bill_detail`
+-- Chỉ mục cho bảng `user_bill_detail`
 --
 ALTER TABLE `user_bill_detail`
   ADD KEY `bill_id` (`bill_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `user_bill_seq`
+-- Chỉ mục cho bảng `user_bill_seq`
 --
 ALTER TABLE `user_bill_seq`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usr`
+-- Chỉ mục cho bảng `usr`
 --
 ALTER TABLE `usr`
   ADD PRIMARY KEY (`id`),
   ADD KEY `role_id` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `brand`
+-- AUTO_INCREMENT cho bảng `brand`
 --
 ALTER TABLE `brand`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `deliver`
+-- AUTO_INCREMENT cho bảng `deliver`
 --
 ALTER TABLE `deliver`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `guest_bill_seq`
+-- AUTO_INCREMENT cho bảng `guest_bill_seq`
 --
 ALTER TABLE `guest_bill_seq`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `payment_mode`
+-- AUTO_INCREMENT cho bảng `payment_mode`
 --
 ALTER TABLE `payment_mode`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
--- AUTO_INCREMENT for table `product_type`
+-- AUTO_INCREMENT cho bảng `product_type`
 --
 ALTER TABLE `product_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT cho bảng `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `status`
+-- AUTO_INCREMENT cho bảng `status`
 --
 ALTER TABLE `status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `user_bill_seq`
+-- AUTO_INCREMENT cho bảng `user_bill_seq`
 --
 ALTER TABLE `user_bill_seq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `cart`
+-- Các ràng buộc cho bảng `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `usr` (`id`),
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `guest_bill`
+-- Các ràng buộc cho bảng `guest_bill`
 --
 ALTER TABLE `guest_bill`
   ADD CONSTRAINT `guest_bill_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
@@ -996,21 +948,21 @@ ALTER TABLE `guest_bill`
   ADD CONSTRAINT `guest_bill_ibfk_3` FOREIGN KEY (`deliver_id`) REFERENCES `deliver` (`id`);
 
 --
--- Constraints for table `guest_bill_detail`
+-- Các ràng buộc cho bảng `guest_bill_detail`
 --
 ALTER TABLE `guest_bill_detail`
   ADD CONSTRAINT `guest_bill_detail_ibfk_1` FOREIGN KEY (`bill_id`) REFERENCES `guest_bill` (`id`),
   ADD CONSTRAINT `guest_bill_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`product_type_id`) REFERENCES `product_type` (`id`),
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`);
 
 --
--- Constraints for table `user_bill`
+-- Các ràng buộc cho bảng `user_bill`
 --
 ALTER TABLE `user_bill`
   ADD CONSTRAINT `user_bill_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `usr` (`id`),
@@ -1019,14 +971,14 @@ ALTER TABLE `user_bill`
   ADD CONSTRAINT `user_bill_ibfk_4` FOREIGN KEY (`deliver_id`) REFERENCES `deliver` (`id`);
 
 --
--- Constraints for table `user_bill_detail`
+-- Các ràng buộc cho bảng `user_bill_detail`
 --
 ALTER TABLE `user_bill_detail`
   ADD CONSTRAINT `user_bill_detail_ibfk_1` FOREIGN KEY (`bill_id`) REFERENCES `user_bill` (`id`),
   ADD CONSTRAINT `user_bill_detail_ibfk_4` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
--- Constraints for table `usr`
+-- Các ràng buộc cho bảng `usr`
 --
 ALTER TABLE `usr`
   ADD CONSTRAINT `usr_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);

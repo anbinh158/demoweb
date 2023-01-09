@@ -1,27 +1,93 @@
 <?php
-$servername = 'localhost';
-$username = 'root';
-$password = '';
-$dbname = 'demoweb';
-
-$conn= new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error){
-    die("Connection failed: " . $conn->connect_error);
+session_start();
+require 'conn.php';
+$userId = null;
+$roleId = null;
+if (isset($_SESSION["active"]))
+{
+	setcookie('guest', null, -1, '/'); 
 }
-mysqli_query($conn,'set names utf8');
 // Ket noi CSDL
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<title>TECH5</title>
+		<link rel ='icon' href = 'img/title.png'>
+
+		<script type="text/javascript">
+        var no = 20;
+        if (matchMedia('only screen and (max-width: 767px)').matches) {
+            no = 10        }
+        let img_url = 'https://anonyviet.com/resource/hodaoroi/hoadao.png';
+        var hidesnowtime = 0;
+        var color_snow  = '#fff';
+        var snowdistance = 'windowheight'; // windowheight or pageheight;
+        var ie4up = (document.all) ? 1 : 0;
+        var ns6up = (document.getElementById && !document.all) ? 1 : 0;
+        function iecompattest() {
+            return (document.compatMode && document.compatMode != 'BackCompat') ? document.documentElement : document.body
+        }
+        var dx, xp, yp;
+        var am, stx, sty;
+        var i, doc_width = 800, doc_height = 600;
+        if (ns6up) {
+            doc_width = self.innerWidth;
+            doc_height = self.innerHeight
+        } else if (ie4up) {
+            doc_width = iecompattest().clientWidth;
+            doc_height = iecompattest().clientHeight
+        }
+        dx = new Array();
+        xp = new Array();
+        yp = new Array();
+        am = new Array();
+        stx = new Array();
+        sty = new Array();
+        for (i = 0; i < no; ++i) {
+            dx[i] = 0;
+            xp[i] = Math.random() * (doc_width - 50);
+            yp[i] = Math.random() * doc_height;
+            am[i] = Math.random() * 20;
+            stx[i] = 0.02 + Math.random() / 10;
+            sty[i] = 0.7 + Math.random();
+            if (ie4up || ns6up) {
+                document.write('<div id="dot'+i+'" style="POSITION:fixed;Z-INDEX:'+(99+i)+';VISIBILITY:visible;TOP:15px;LEFT:15px;pointer-events: none;width:15px"><span style="font-size:18px;color:'+color_snow+'"><img src="'+img_url+'" alt=""></span></div>');
+            }
+        }
+        function snowIE_NS6() {
+            doc_width = ns6up ? window.innerWidth - 10 : iecompattest().clientWidth - 10;
+            doc_height = (window.innerHeight && snowdistance == 'windowheight') ? window.innerHeight : (ie4up && snowdistance == 'windowheight') ? iecompattest().clientHeight : (ie4up && !window.opera && snowdistance == 'pageheight') ? iecompattest().scrollHeight : iecompattest().offsetHeight;
+            for (i = 0; i < no; ++i) {
+                yp[i] += sty[i];
+                if (yp[i] > doc_height - 50) {
+                    xp[i] = Math.random() * (doc_width - am[i] - 30);
+                    yp[i] = 0;
+                    stx[i] = 0.02 + Math.random() / 10;
+                    sty[i] = 0.7 + Math.random()
+                }
+                dx[i] += stx[i];
+                document.getElementById('dot' + i).style.top = yp[i] + 'px';
+                document.getElementById('dot' + i).style.left = xp[i] + am[i] * Math.sin(dx[i]) + 'px'
+            }
+            snowtimer = setTimeout('snowIE_NS6()', 10)
+        }
+        function hidesnow() {
+            if (window.snowtimer) {
+                clearTimeout(snowtimer)
+            }
+            for (i = 0; i < no; i++) document.getElementById('dot' + i).style.visibility = 'hidden'
+        }
+        if (ie4up || ns6up) {
+            snowIE_NS6();
+            if (hidesnowtime > 0) setTimeout('hidesnow()', hidesnowtime * 1000)
+        }
+    </script>
+
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-		<title>TECH5</title>
-		<link rel ='icon' href = 'img/logo-tittle.png'>
 
 		<!-- Google font -->
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
@@ -197,7 +263,7 @@ mysqli_query($conn,'set names utf8');
 					{
 						return document.getElementById("tel").required = true;
 					}
-					else alert('thanh toán thành công');				
+					else alert('Thanh toán thành công!');				
 				}
 			
 		</script>
@@ -250,6 +316,7 @@ mysqli_query($conn,'set names utf8');
 			$rows = $result -> fetch_assoc();
 			return $rows["quantity"];
 		}
+		
 
 		function totalByUser($id, $conn){
 			$total = 0;
@@ -285,21 +352,43 @@ mysqli_query($conn,'set names utf8');
 			}
 			return $unique_array;
 		}
+		
+		?>
+		 <!-- Banner Topzone-->
+		 <div class="header-top-bar">
+        <div class="banner-media">
+			<div class="item" data-background-color="#5C0756" data-order="1">
+                    <a aria-label="slide" data-cate="0" data-place="1612" href="https://www.facebook.com/profile.php?id=100088740327226" onclick="jQuery.ajax({ url: '/bannertracking?bid=67439&r='+ (new Date).getTime(), async: true, cache: false });">
+					<center><img width='1200' height='44'   src="img/BANNER.WEBP" alt="sale"  > </center>  </a>
+                </div>
+                
+    </div>
+    <style>
+        .banner-media{
+            background-color: #5C0756;
+        }
+    </style>
+
+        </div>
+</div>
+		<?php
 
 		// TOP HEADER
 		if (isset($_SESSION["active"]))
 		{
 			$userId = $_SESSION["active"];
 			$roleId = $_SESSION["role"]; 			
-			include ("layout/Header/User.php");			
+			include ("layout/header/User.php");			
 		}
 		else
 		{			
-			include ("layout/Header/Guest.php");
+			include ("layout/header/Guest.php");
 		}
+		
 
 		// NAV AND SECTION
 		if (isset($_GET["nav"]))
+		
 		{
 			$nav = $_GET["nav"];
 			if ($nav == "laptop"){
@@ -337,43 +426,63 @@ mysqli_query($conn,'set names utf8');
 		{
 			include ("layout/Home.php");
 		}
+		
 	?>				
+
 		<!-- NEWSLETTER -->
 		<div id="newsletter" class="section">
 			<!-- container -->
 			<div class="container">
 				<!-- row -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="newsletter">
-							<p>Nhận Mail thông báo từ <strong>WEBSITE</strong></p>
-							<form>
-								<input class="input" type="email" placeholder="Nhập Email">
-								<button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-							</form>
-							<ul class="newsletter-follow">
-								<li>
-									<a href="#"><i class="fa fa-facebook"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-twitter"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-instagram"></i></a>
-								</li>
-								<li>
-									<a href="#"><i class="fa fa-pinterest"></i></a>
-								</li>
-							</ul>
-						</div>
+				<div class='row'>
+					<div class='col-md-12'>
+					<center><h2>!!! PHẢN HỒI VỀ <font color='#FA19B8'>TECH5</font> TẠI ĐÂY !!!</h2><br></center>
+					<center><div>
+					<form action="mailto:mistech5.studio@gmail.com" method="post" enctype="text/plain">
+						<strong>NAME: </strong>
+					<input style='display:inline' type="text" name="Name: " placeholder ='VD: abc, ...' size ='40'>
+						<br><br><strong>EMAIL: </strong>
+					<input type="text" name="Mail: " placeholder ='VD: someone@example.com, ...' size ='50'>
+						<br><br><strong>REMARK:  </strong>
+					<input type="text" name="Remark: " placeholder ='VD: Web xịn thế, ...' size ="60"><br><br>
+					<button type ="submit"; style='position: center;
+    								display: inline;
+    								width: 100px;
+									height: 40px;
+									text-align: center;
+									line-height: 40px;
+									border: 1px solid #E4E7ED;
+									background-color: #5C0756;
+									color: #FFF;
+									border-radius: 50px;
+									-webkit-transition: 0.2s all;
+									transition: 0.2s all;'>
+
+										  <strong>SEND</strong></button> 
+					<button type ="reset" style='position: center;
+									display: inline;
+									width: 100px;
+									height: 40px;
+									text-align: center;
+									line-height: 40px;
+									border: 1px solid #E4E7ED;
+									background-color: #5C0756;
+									border-radius: 50px;
+									color: #FFF;
+									-webkit-transition: 0.2s all;
+									transition: 0.2s all;'>
+										   <strong>RESET</strong></button>
+					</form>
+					</div></center>
 					</div>
 				</div>
+					
 				<!-- /row -->
 			</div>
 			<!-- /container -->
 		</div>
 		<!-- /NEWSLETTER -->
-
+		
 		<!-- FOOTER -->
 		<?php
 			include ("layout/Footer.php");
@@ -473,7 +582,7 @@ mysqli_query($conn,'set names utf8');
 				$('.infoproduct').click(function(){
 					var idprd = $(this).data('id');
 					$.ajax({
-						url:'actions/Products/GetDetail.php',
+						url:'Actions/Product/GetDetail.php',
 						type: 'post',
 						data: {get_id: idprd},
 						success: function(response){

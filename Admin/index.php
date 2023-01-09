@@ -61,7 +61,7 @@
             }
 
             .nav__user:hover{
-                color: #E95454;
+                color: #5C0756;
             }
 
             .nav__user #button__user{
@@ -86,7 +86,7 @@
             }
 
             .menu__ngdung--1:hover{
-                color: #E95454;
+                color: #5C0756;
             }
 
             .nav__user .menu__ngdung{
@@ -123,19 +123,33 @@
                 });
             }
 
-            function updateUser (userId, type){
+            function updateUser (id, type){
                 $.ajax({
-                    url: 'actions/Users/Update.php',
+                    url: 'actions/users/update.php',
                     type: 'POST',
                     data: 
-                    {
-                        'id': userId,
+                    {   
+                        'id': id,
                         'type': type,
                     },
-                    success: function (response){
+                    success: function(response){
                         document.location.reload(true);
                     }
-                })
+                });
+            }
+            function EditUser(id, type){
+                $.ajax({
+                    url: 'actions/products/edit.php',
+                    type: 'POST',
+                    data: 
+                    {   
+                        'id': id,
+                        'type': type,
+                    },
+                    success: function(response){
+                        document.location.reload(true);
+                    }
+                });
             }
 
             function delivery (orderId, type){
@@ -285,7 +299,7 @@
                         $nav = $_GET["nav"];
                         if ($nav == "usr")
                         {
-                            include ("layout/NewOrders/User.php");
+                            include ("layout/user.php");
                         }
                         else if ($nav == "products")
                         {
@@ -316,10 +330,12 @@
                             include ("layout/WaitingOrders/Guest.php");
                         }
                     }
-                    else{
+                    else
+                    {
                         include ("layout/NewOrders/User.php");
 
                     }
+                    
                 ?>
                 </main>                
             </div>
