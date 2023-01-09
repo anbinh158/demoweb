@@ -89,14 +89,6 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-            <?php
-                if ($row['is_deleted'] == 0)
-                    {
-                ?>
-                      <button id="<?php echo $row['id'];?>" class="btn btn-primary btn-block" onclick="EditUser(this.id)">Sửa</button>
-                <?php
-                    }
-            ?>
 
         </div>
         <div class="modal-body--changeusr">
