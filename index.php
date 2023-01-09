@@ -452,7 +452,7 @@ if (isset($_SESSION["active"]))
 									text-align: center;
 									line-height: 40px;
 									border: 1px solid #E4E7ED;
-									background-color: #FA19B8;
+									background-color: #5C0756;
 									color: #FFF;
 									border-radius: 50px;
 									-webkit-transition: 0.2s all;
@@ -466,7 +466,7 @@ if (isset($_SESSION["active"]))
 									text-align: center;
 									line-height: 40px;
 									border: 1px solid #E4E7ED;
-									background-color: #FA19B8;
+									background-color: #5C0756;
 									border-radius: 50px;
 									color: #FFF;
 									-webkit-transition: 0.2s all;
