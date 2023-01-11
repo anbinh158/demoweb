@@ -55,7 +55,7 @@
                         <td style="text-align: center;">
                             <!-- <a href="#editproduct" data-toggle="modal" data-id = "<?php echo $row['id']?>" class = "product"><button class="btn btn-primary btn-block">sửa</button></a> -->
                             <a>
-                              <button id="<?php echo $row['id']?>" class="change__prd btn btn-primary btn-block" onclick="updateProduct(this.id)">sửa</button>
+                              <button id="<?php echo $row['id']?>" class="change__prd btn btn-primary btn-block" onclick="updateProduct(this.id)">Sửa</button>
                             </a>
                         </td>
                         <td style="text-align: center;">
