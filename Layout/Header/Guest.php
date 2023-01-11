@@ -40,7 +40,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<a href="#">Bạn quên mật khẩu ?</a>
+					<a href='reset.php'>Bạn quên mật khẩu ?</a>						
 				</div>
 			</div>
 		</div>
