@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>How to create Reset Password in PHP MySQL</title>
+		<title>!!!Đổi mật khẩu!!!</title>
 		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
 		<link rel="stylesheet" type="text/css" href="reset.css"/>
 	</head>
@@ -9,7 +9,7 @@
 <body>
 	<!-- Form Open -->
 	<fieldset>
-		<legend>Reset Password</legend>
+		<legend>!!!Đổi mật khẩu!!!</legend>
 		<!-- Include PHP Script -->
 		<?php 
         include 'resetpass.php';
@@ -27,7 +27,7 @@
 			
 			<dl>
 				<dt>
-					New Password
+					Nhập mật khẩu mới
 				</dt>
 					<dd>
 						<input type="password" name="new_pass" placeholder="Enter New Password..." value=""  required />
@@ -36,7 +36,7 @@
 			
 			<dl>
 				<dt>
-					Retype New Password
+					Nhập lại mật khẩu mới
 				</dt>
 					<dd>
 						<input type="password" name="re_pass" placeholder="Retype New Password..." value="" required />

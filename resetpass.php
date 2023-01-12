@@ -7,7 +7,7 @@
     $id = $_POST['id'];
     $new_pass=$_POST['new_pass'];
     $re_pass=$_POST['re_pass'];
-    $chg_pwd=mysqli_query($conn, "select * from usr where id='$id'");
+    $chg_pwd=mysqli_query($conn, "select * from usr");
     $chg_pwd1=mysqli_fetch_array($chg_pwd);
     $data_pwd=$chg_pwd1['password'];
     if($data_pwd==$old_pass){

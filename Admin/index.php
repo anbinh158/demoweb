@@ -262,7 +262,7 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" style=" text-decoration: none;">
-                                Đơn hàng chưa giao
+                                Đơn hàng đang giao
                             </a>
                             <div>
                                 <nav class="sb-sidenav-menu-nested nav accordion">

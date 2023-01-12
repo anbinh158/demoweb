@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $query = mysqli_query($conn, "SELECT * FROM `user_bill` WHERE `status_id` = 2 ORDER BY `created_time` DESC");      
+                    $query = mysqli_query($conn, "SELECT * FROM `user_bill` WHERE `status_id` = 3 ORDER BY `created_time` DESC");      
                     $i = 0;
                     while ($row = mysqli_fetch_array($query)) {
                         $i++;
@@ -44,7 +44,7 @@
                         <td style="text-align: center;">
                             <select id="<?php echo $row['id']; ?>">
                                 <?php
-                                    $delivers = mysqli_query($conn, "SELECT * FROM `deliver` WHERE `is_ready` = 1");  
+                                    $delivers = mysqli_query($conn, "SELECT * FROM `deliver` WHERE `is_ready` = 0");  
                                     for ($x = 0; $x < $delivers -> num_rows; $x++)
                                     {
                                         $deliver = $delivers -> fetch_assoc();
