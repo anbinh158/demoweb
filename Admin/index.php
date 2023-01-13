@@ -137,7 +137,7 @@
                     }
                 });
             }
-            function EditUser(id, type){
+            function EditProducts(id, type){
                 $.ajax({
                     url: 'actions/products/edit.php',
                     type: 'POST',
