@@ -14,7 +14,7 @@
                     <th style="text-align: center;">Payment</th>
                     <th style="text-align: center;">Address</th>
                     <th style="text-align: center;">Status</th>
-                    <th style="text-align: center;">Deliver</th>
+                    <th style="text-align: center;"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,21 +42,7 @@
                         <td style="text-align: center;"><?php echo $row['address'] ?></td>
                         <td style="text-align: center;"><?php echo $row['status_id']; ?></td>
                         <td style="text-align: center;">
-                            <select id="<?php echo $row['id']; ?>">
-                                <?php
-                                    $delivers = mysqli_query($conn, "SELECT * FROM `deliver` WHERE `is_ready` = 0");  
-                                    for ($x = 0; $x < $delivers -> num_rows; $x++)
-                                    {
-                                        $deliver = $delivers -> fetch_assoc();
-                                ?>
-                                    <option value="<?php echo $deliver["id"] ?>"><?php echo $deliver["name"] ?></option>
-                                <?php
-                                    }
-                                ?>
-                            </select>
-                        </td>
-                        <td style="text-align: center;">
-                            <button class="btn btn-primary" id="<?php echo $row['id']; ?>" onclick="delivery(this.id, 'guest')">Delivery</button>
+                        <button class="btn btn-primary" id="<?php echo $row['id']; ?>" onclick="approve(this.id, 'guest')">Approve</button>                        
                         </td>
                     </tr>
                 <?php

@@ -64,7 +64,7 @@
         $phoneNum = $_POST["tel"];
         if ($conn -> query("INSERT INTO `guest_bill`(`status_id`,`name`, `phone_number`, `address`, `total`, `payment_mode_id`, `note`) VALUES(2, '$name' , '$phoneNum', '$address', $toltal, $payment, '$note')") === true)
         {
-            $result = $conn -> query("SELECT `id` FROM `guest_bill` WHERE `created_time` <= CURRENT_TIMESTAMP() ORDER BY `created_time` desc LIMIT 2;");
+            $result = $conn -> query("SELECT `id` FROM `guest_bill` WHERE `created_time` <= CURRENT_TIMESTAMP() ORDER BY `created_time` desc LIMIT 1;");
             $billId = $result ->fetch_array();
             // Get products from cookie
             $products = explode('.', $_COOKIE["guest"]);

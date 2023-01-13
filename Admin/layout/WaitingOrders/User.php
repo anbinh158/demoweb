@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    $query = mysqli_query($conn, "SELECT * FROM `user_bill` WHERE `status_id` = 3 ORDER BY `created_time` DESC");      
+                    $query = mysqli_query($conn, "SELECT * FROM `user_bill` WHERE `status_id` = 1 ORDER BY `created_time` DESC");      
                     $i = 0;
                     while ($row = mysqli_fetch_array($query)) {
                         $i++;
